@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BalancePipe } from '../../pipes/balance.pipe';
 
 @Component({
   selector: 'app-bank-account',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule, BalancePipe],
   templateUrl: './bank-account.component.html',
-  styleUrl: './bank-account.component.scss'
+  styleUrl: './bank-account.component.scss',
 })
 export class BankAccountComponent {
-account ={
-  name: 'Main account',
-  balance: 10000,
-  currency: 'PLN',
-  status: 'inactive'
-}
+  @Input() account: any;
+  @Output() withdrawMoney$ = new EventEmitter<any>();
+
+  moneyToWithdraw = null;
+
+  withdrawMoney() {
+    this.withdrawMoney$.next(this.moneyToWithdraw);
+  }
 }
