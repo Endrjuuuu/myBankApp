@@ -1,6 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { BalancePipe } from '../../pipes/balance.pipe';
 import { BankAccount } from '../../models/dashboard.models';
 
@@ -16,17 +21,23 @@ export class BankAccountComponent {
   @Output() withdrawMoney$ = new EventEmitter<number>();
 
   form = new FormGroup({
-    withdraw: new FormControl(0, {validators: [Validators.required, Validators.min(1), Validators.max(this.account.balance)]})}
-  )
+    withdraw: new FormControl(0, {
+      validators: [
+        Validators.required,
+        Validators.min(1),
+        Validators.max(this.account.balance),
+      ],
+    }),
+  });
 
-  get withdrawControl(): FormControl{
-    return this.form.get('withdraw') as FormControl
+  get withdrawControl(): FormControl {
+    return this.form.get('withdraw') as FormControl;
   }
 
-  get withdrawControlValue() : number{
+  get withdrawControlValue(): number {
     return this.withdrawControl.value;
   }
- 
+
   withdrawMoney() {
     this.withdrawMoney$.next(this.withdrawControlValue);
     this.withdrawControl.setValue(null);
