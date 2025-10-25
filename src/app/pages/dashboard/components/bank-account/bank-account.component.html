@@ -1,4 +1,4 @@
-<div class="bank-account">
+<div [formGroup]="form" class="bank-account">
   <div class="bank-account__name">
     Name: <span class="font-weight-bold">{{ account.name }}</span>
   </div>
@@ -16,8 +16,8 @@
     Currency: <span class="font-weight-bold">{{ account.currency }}</span>
   </div>
   <div class="bank-account__withdraw">
-    <input [(ngModel)]="moneyToWithdraw" placeholder="Withdraw" type="number" />
-    <button (click)="withdrawMoney()" [disabled]="!moneyToWithdraw">
+    <input formControlName="withdraw" placeholder="Withdraw" type="number" />
+    <button (click)="withdrawMoney()" [disabled]="!withdrawControlValue">
       Withdraw
     </button>
   </div>
