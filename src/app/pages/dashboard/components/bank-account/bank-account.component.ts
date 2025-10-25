@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -16,19 +16,23 @@ import { BankAccount } from '../../models/dashboard.models';
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
 })
-export class BankAccountComponent {
+export class BankAccountComponent implements OnInit {
   @Input() account!: BankAccount;
   @Output() withdrawMoney$ = new EventEmitter<number>();
 
-  form = new FormGroup({
-    withdraw: new FormControl(0, {
-      validators: [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(this.account.balance),
-      ],
-    }),
-  });
+  form!: FormGroup;
+
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      withdraw: new FormControl(0, {
+        validators: [
+          Validators.required,
+          Validators.min(1),
+          Validators.max(this.account?.balance),
+        ],
+      }),
+    });
+  }
 
   get withdrawControl(): FormControl {
     return this.form.get('withdraw') as FormControl;

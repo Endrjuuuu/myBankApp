@@ -1,5 +1,7 @@
 # MyBankApp
-2.10. Użycie async pipe
+
+2.12. Utworzenie formularza FormGroup
+5 min
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 
