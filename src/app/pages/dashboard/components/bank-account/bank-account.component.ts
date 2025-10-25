@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BalancePipe } from '../../pipes/balance.pipe';
+import { BankAccount } from '../../models/dashboard.models';
 
 @Component({
   selector: 'app-bank-account',
@@ -11,10 +12,10 @@ import { BalancePipe } from '../../pipes/balance.pipe';
   styleUrl: './bank-account.component.scss',
 })
 export class BankAccountComponent {
-  @Input() account: any;
-  @Output() withdrawMoney$ = new EventEmitter<any>();
+  @Input() account!: BankAccount;
+  @Output() withdrawMoney$ = new EventEmitter<number>();
 
-  moneyToWithdraw = null;
+  moneyToWithdraw = 0;
 
   withdrawMoney() {
     this.withdrawMoney$.next(this.moneyToWithdraw);
