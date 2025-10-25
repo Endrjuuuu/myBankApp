@@ -1,0 +1,15 @@
+<div class="bank-account">
+  <div class="bank-account__name">
+    Name: <span class="font-weight-bold">{{ account.name }}</span>
+  </div>
+  <div
+    class="bank-account__status"
+    [class]="'bank-account__status--' + account.status"
+  ></div>
+  <div class="bank-account__balance">Balance: <span class="font-weight-bold">{{ account.balance }}</span></div>
+  <div class="bank-account__currency">Currency: <span class="font-weight-bold">{{ account.currency }}</span></div>
+  <div class="bank-account__withdraw">
+    <input placeholder="Withdraw" type="number" />
+    <button>Withdraw</button>
+  </div>
+</div>
