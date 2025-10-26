@@ -17,8 +17,14 @@
   </div>
   <div class="bank-account__withdraw">
     <input formControlName="withdraw" placeholder="Withdraw" type="number" />
-    <button (click)="withdrawMoney()" [disabled]="!withdrawControlValue">
+    <button
+      (click)="withdrawMoney()"
+      [disabled]="!withdrawControlValue || form.invalid"
+    >
       Withdraw
     </button>
   </div>
+  <ng-container *ngIf="withdrawControl.dirty && withdrawControl.errors as errors">
+    <p>Minimum value in {{minError.min}}</p>
+  </ng-container>
 </div>
