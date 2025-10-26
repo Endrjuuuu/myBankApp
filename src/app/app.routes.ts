@@ -1,4 +1,9 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { PageNotFoundComponent } from './pages/dashboard/components/page-not-found/page-not-found.component';
 
-export const routes: Routes = [{ path: '', component: DashboardComponent }];
+export const routes: Routes = [
+  { path: 'dashboard', component: DashboardComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
+  { path: '**', component: PageNotFoundComponent },
+];
