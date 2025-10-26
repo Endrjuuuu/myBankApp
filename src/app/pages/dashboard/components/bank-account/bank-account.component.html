@@ -24,7 +24,10 @@
       Withdraw
     </button>
   </div>
-  <ng-container *ngIf="withdrawControl.dirty && withdrawControl.errors as errors">
-    <p>Minimum value in {{minError.min}}</p>
+  <ng-container
+    *ngIf="withdrawControl.dirty && withdrawControl.errors as errors"
+  >
+    <p *ngIf="errors['min'] as minError">Minimum value is {{ minError.min }}</p>
+    <p *ngIf="errors['max']">Insufficient money in the account</p>
   </ng-container>
 </div>
