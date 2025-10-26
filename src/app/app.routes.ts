@@ -3,7 +3,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './pages/dashboard/components/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', loadComponent: () => DashboardComponent },
   { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', loadComponent: () => PageNotFoundComponent },
 ];

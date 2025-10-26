@@ -1,6 +1,6 @@
 # MyBankApp
 
-2.13
+2.14. Dodawanie stylów w aplikacji
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 
