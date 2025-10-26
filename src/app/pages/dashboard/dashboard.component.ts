@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { CommonModule } from '@angular/common';
 import { BankAccountHttpService } from './services/bank-account-http.service';
@@ -12,9 +12,8 @@ import { BankAccountHttpService } from './services/bank-account-http.service';
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
+  private readonly bankAccountHttpService = inject(BankAccountHttpService);
   accounts$ = this.bankAccountHttpService.getBankAccounts();
-
-  constructor(private bankAccountHttpService: BankAccountHttpService) {}
 
   onWithdrawMoney(accountId: number, withdrawAmount: number) {
     this.bankAccountHttpService.withdrawMoney(accountId, withdrawAmount);

@@ -1,7 +1,6 @@
 # MyBankApp
 
-3.2. Angular 17 - co nowego?
-00:06:24
+3.3. Zaawansowane operatory RxJS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 
