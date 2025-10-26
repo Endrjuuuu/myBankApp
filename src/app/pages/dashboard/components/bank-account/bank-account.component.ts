@@ -32,6 +32,18 @@ export class BankAccountComponent implements OnInit, OnDestroy {
   form!: FormGroup;
   showWithdrawWarning = false;
 
+  get withdrawControl(): FormControl {
+    return this.form.get('withdraw') as FormControl;
+  }
+
+  get withdrawControlValue(): number {
+    return this.withdrawControl.value;
+  }
+
+  get balance(): number {
+    return this.account.balance;
+  }
+
   ngOnInit(): void {
     this.form = new FormGroup({
       withdraw: new FormControl(0, {
@@ -52,14 +64,6 @@ export class BankAccountComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.destroy$.next();
-  }
-
-  get withdrawControl(): FormControl {
-    return this.form.get('withdraw') as FormControl;
-  }
-
-  get withdrawControlValue(): number {
-    return this.withdrawControl.value;
   }
 
   withdrawMoney() {

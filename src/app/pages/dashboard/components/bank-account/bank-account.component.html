@@ -6,10 +6,10 @@
     class="bank-account__status"
     [class]="'bank-account__status--' + account.status"
   ></div>
-  <div class="bank-account__balance">
+  <div [ngClass]="{'bank-account__balance--positive': balance > 0, 'bank-account__balance--negative': balance < 0,}" class="bank-account__balance">
     Balance:
     <span class="font-weight-bold">{{
-      account.balance | balance : account.currency : true
+      balance | balance : account.currency : true
     }}</span>
   </div>
   <div class="bank-account__currency">
