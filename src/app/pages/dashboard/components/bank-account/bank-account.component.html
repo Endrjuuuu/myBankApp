@@ -30,4 +30,7 @@
     <p *ngIf="errors['min'] as minError">Minimum value is {{ minError.min }}</p>
     <p *ngIf="errors['max']">Insufficient money in the account</p>
   </ng-container>
+  <p *ngIf="showWithdrawWarning && form.valid" class="withdraw__warning">
+    {{ "Are you sure to withdraw " + withdrawControlValue + "?" }}
+  </p>
 </div>

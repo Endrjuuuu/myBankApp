@@ -1,7 +1,6 @@
 # MyBankApp
 
-2.12. Utworzenie formularza FormGroup
-10:30 min
+2.13
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 

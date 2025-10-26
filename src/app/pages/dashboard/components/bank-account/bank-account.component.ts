@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -8,6 +15,7 @@ import {
 } from '@angular/forms';
 import { BalancePipe } from '../../pipes/balance.pipe';
 import { BankAccount } from '../../models/dashboard.models';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-bank-account',
@@ -16,11 +24,13 @@ import { BankAccount } from '../../models/dashboard.models';
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
 })
-export class BankAccountComponent implements OnInit {
+export class BankAccountComponent implements OnInit, OnDestroy {
   @Input() account!: BankAccount;
   @Output() withdrawMoney$ = new EventEmitter<number>();
 
+  destroy$ = new Subject<void>();
   form!: FormGroup;
+  showWithdrawWarning = false;
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -32,6 +42,16 @@ export class BankAccountComponent implements OnInit {
         ],
       }),
     });
+
+    this.withdrawControl.valueChanges
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((value) => {
+        this.showWithdrawWarning = value >= 1000;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
   }
 
   get withdrawControl(): FormControl {
