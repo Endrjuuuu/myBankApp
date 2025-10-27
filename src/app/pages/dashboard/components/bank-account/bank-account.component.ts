@@ -23,6 +23,7 @@ import { BalancePipe } from '../../pipes/balance.pipe';
 import { BankAccount } from '../../models/dashboard.models';
 import { Subject, takeUntil } from 'rxjs';
 import { CardStatusDirective } from '../../../../shared/directives/card-status.directive';
+import { InputNumberComponent } from '../../../../shared/components/input-number/input-number.component';
 
 @Component({
   selector: 'app-bank-account',
@@ -32,6 +33,7 @@ import { CardStatusDirective } from '../../../../shared/directives/card-status.d
     ReactiveFormsModule,
     BalancePipe,
     CardStatusDirective,
+    InputNumberComponent,
   ],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',

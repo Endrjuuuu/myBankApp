@@ -22,7 +22,10 @@
     Currency: <span class="font-weight-bold">{{ account.currency }}</span>
   </div>
   <div class="bank-account__withdraw">
-    <input formControlName="withdraw" placeholder="Withdraw" type="number" />
+    <app-input-number
+      formControlName="withdraw"
+      placeholder="Withdraw"
+    ></app-input-number>
     <button
       (click)="withdrawMoney()"
       [disabled]="!withdrawControlValue || form.invalid"
