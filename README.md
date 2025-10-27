@@ -1,6 +1,6 @@
 # MyBankApp
 
-3.7. Utworzenie własnej dyrektywy
+3.8. Utworzenie własnej kontrolki formularza
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 

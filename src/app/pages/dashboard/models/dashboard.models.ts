@@ -1,3 +1,5 @@
+import { Status } from "../../../shared/models/status.type";
+
 export interface BankAccount {
   id: number;
   status: Status;
@@ -6,7 +8,6 @@ export interface BankAccount {
   currency: Currency;
 }
 
-export type Status = 'active' | 'inactive';
 export enum Currency {
   PLN = 'PLN',
   EUR = 'EUR',
