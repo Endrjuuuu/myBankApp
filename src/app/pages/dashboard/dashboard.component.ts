@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BankAccountComponent } from './components/bank-account/bank-account.component';
 import { CommonModule } from '@angular/common';
 import { BankAccountHttpService } from './services/bank-account-http.service';
@@ -11,6 +11,7 @@ import { combineLatest, map } from 'rxjs';
   imports: [CommonModule, BankAccountComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent {
   private readonly bankAccountHttpService = inject(BankAccountHttpService);

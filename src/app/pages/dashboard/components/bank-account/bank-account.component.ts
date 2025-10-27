@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
+  inject,
   Input,
   OnDestroy,
   OnInit,
@@ -23,10 +26,13 @@ import { Subject, takeUntil } from 'rxjs';
   imports: [CommonModule, ReactiveFormsModule, BalancePipe],
   templateUrl: './bank-account.component.html',
   styleUrl: './bank-account.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BankAccountComponent implements OnInit, OnDestroy {
   @Input() account!: BankAccount;
   @Output() withdrawMoney$ = new EventEmitter<number>();
+
+  cdr = inject(ChangeDetectorRef);
 
   destroy$ = new Subject<void>();
   form!: FormGroup;
@@ -69,5 +75,7 @@ export class BankAccountComponent implements OnInit, OnDestroy {
   withdrawMoney() {
     this.withdrawMoney$.next(this.withdrawControlValue);
     this.withdrawControl.setValue(null);
+    this.form.reset();
+    this.cdr.detectChanges();
   }
 }
