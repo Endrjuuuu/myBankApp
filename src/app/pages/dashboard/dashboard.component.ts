@@ -3,12 +3,13 @@ import { BankAccountComponent } from './components/bank-account/bank-account.com
 import { CommonModule } from '@angular/common';
 import { BankAccountHttpService } from './services/bank-account-http.service';
 import { BehaviorSubject, combineLatest, map, switchMap } from 'rxjs';
+import { TimerComponent } from "./components/timer/timer.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   providers: [BankAccountHttpService],
-  imports: [CommonModule, BankAccountComponent],
+  imports: [CommonModule, BankAccountComponent, TimerComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
