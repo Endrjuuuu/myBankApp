@@ -1,6 +1,7 @@
 # MyBankApp
 
-3.9. Angular Signals
+3.10. Guardy funkcyjne i klasowe
+12min
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 
