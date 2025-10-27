@@ -1,7 +1,6 @@
 # MyBankApp
 
-3.3. Konfigurowanie aplikacji
-4min
+3.7. Utworzenie własnej dyrektywy
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
 

@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
 import {
+  AfterContentInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
+  ContentChild,
+  ElementRef,
   EventEmitter,
   inject,
   Input,
@@ -28,7 +31,10 @@ import { Subject, takeUntil } from 'rxjs';
   styleUrl: './bank-account.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BankAccountComponent implements OnInit, OnDestroy {
+export class BankAccountComponent
+  implements OnInit, AfterContentInit, OnDestroy
+{
+  @ContentChild('deleteButton') deleteButton!: ElementRef;
   @Input() account!: BankAccount;
   @Output() withdrawMoney$ = new EventEmitter<number>();
 
@@ -70,6 +76,12 @@ export class BankAccountComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.destroy$.next();
+  }
+
+  ngAfterContentInit(): void {
+    if (this.account.status === 'inactive') {
+      this.deleteButton.nativeElement.disabled = true;
+    }
   }
 
   withdrawMoney() {

@@ -38,11 +38,11 @@ export class BankAccountHttpService {
   VISIBLE_ACCOUNTS = [1, 3, 4];
 
   getBankAccounts(): Observable<BankAccount[]> {
-    return of(this.BANK_ACCOUNTS).pipe(delay(500));
+    return of(this.BANK_ACCOUNTS).pipe(delay(300));
   }
 
   getVisibleAccounts(): Observable<number[]> {
-    return of(this.VISIBLE_ACCOUNTS).pipe(delay(1000));
+    return of(this.VISIBLE_ACCOUNTS).pipe(delay(200));
   }
 
   withdrawMoney(accountId: number, amount: number): void {
@@ -51,5 +51,11 @@ export class BankAccountHttpService {
         account.balance -= amount;
       }
     });
+  }
+
+  deleteAccount(accountId: number) {
+    this.BANK_ACCOUNTS = this.BANK_ACCOUNTS.filter(
+      (account) => account.id !== accountId,
+    );
   }
 }
