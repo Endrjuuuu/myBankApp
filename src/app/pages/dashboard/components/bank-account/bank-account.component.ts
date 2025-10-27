@@ -95,5 +95,6 @@ export class BankAccountComponent
     this.withdrawControl.setValue(null);
     this.form.reset();
     this.cdr.detectChanges();
+    this.withdrawControl.addValidators(Validators.max(this.account.balance));
   }
 }
